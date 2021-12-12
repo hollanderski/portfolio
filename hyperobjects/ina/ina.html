@@ -1,0 +1,67 @@
+
+<div class="portfolio"><center>
+  <h1>History of Media</h1></center>
+  <div align="left" class="maincontent">
+
+The French National Audiovisual Institute (INA) is the largest audiovisual archives repository in France.
+It gathers heterogeneous data from TV, radio, press and web archives. It stores 18 millions hours recorded and documentation about programs since 1950.
+Its mission is double : to preserve and promote the French audiovisual heritage.
+
+When I started to work in the archive center, it was undergoing <a href="https://www.youtube.com/watch?v=KYOzoRPks8Q">a massive transformation of its data structure</a>. Indeed, it was transforming its compartmentalized data silos into an unified data lake. This move aimed to put the metadata at the center of the data architecture. medium, content, description, event.
+<br><br>
+<center>
+<img class="mainimage" width="50%" src="hyperobjects/ina/silos2.svg"><br>
+ </center> 
+<br><br>
+<!--In 2018, with cooperation with the historians of media at the National Audiovisual Institute of France (INA) I conceived transmedia indicators to analyse the corpus of the televisual archives since 1995. -->
+
+
+<img style="margin-right: 15%; " align="right" width="20%" src="hyperobjects/ina/barometre.png"> <p style="margin-right: 40%;">Every month, historians of media and documentalists publish thematic analysis of media, in a newspaper named <a href="http://www.inatheque.fr/publications-evenements/ina-stat/ina-stat-sommaire.html">InaStat</a>. So far they were conducting studies mostly on TV news, because it is a programme known to be well described in the database. Other programs were rarely studied. <br><br>My objective was twofold : take advantage of the new data lake architecture offering new opportunities of archives analysis to study new metadata that were still little used, and develop new indicators to analyze the structure and content of televisual programs since 1950.
+This involved cooperation of two teams, historians and engineers, that usually don't communicate in order to create an interdisciplinary tool that would benefit both. 
+</p>
+
+<!--<p align="right">InaStat publication</p>-->
+
+<br><br>
+To broaden the scope of media analysis, the first step was to define the scope of usable metadata and quantify their relevance. Afterwards, I created a datamart with BigQuery, as well as a visual interface. I designed and developed both front and back end of the REST API "Baromètre+" to automate and visualize reports in an interactive dashboard. I achieved specialized skills in datavizualisation, by comparing several tools : D3.js, Gephi, sigma.js, Google Data Studio and Tableau. My favorite datavizualisation library is D3.js, that I used extensively to work with multidimensional data and create interactive custom datavizualisations. <br>
+
+One datavisualisation allowed to analyse the structure of TV grids accross channels. It displays the program genre (TV news, series, talk show, etc), the audience share and the production type (self produced content, or purchased). It revealed strategies of channels and media groups (e.g. Lagardère and France Televisions). Take the example of the channel France 2 which prefers to produce content rather than buy it, contrary to TF1, which produces very few original programs.<br><br>
+<center>
+<img class="mainimage" width="60%" src="hyperobjects/ina/circle.jpg"><br>
+<p style="padding-left:20%; padding-right:20%" align="left">Weekly TV program grid for the two first national channels 
+(TF1 and France 2) from September 2012 to June 2013. 
+Genre, type of production and average audience rate of programs by broadcast time slot</p>
+ </center>    
+ <br><br>
+ Among the various indicators conceived with historians of media is a temporal word cloud. It illustrates the evolution of the vocabulary used in a TV program. In this datavisualisation, the axis of time is visible for each year of broadcast of a given program. Every word is linked to its year of use on the axis. Force-directed algorithms (Fruchterman Rheingold, ForceAtlas2) were applied on the graph, which gathers in the center transversal words used throughout the program, and sends less common words on the sides. Since « Joséphine, ange gardien » is a TV series that has been broadcasted for a long period, its analysis reveals language changes through time. For instance, a word like "secte" (sect) appeared in the language at a specific point of time and quickly disappeared. Others like "homosexualité" (homosexuality) entered in the publicised vocabulary more tardily. Surprinsingly, the vocabulary of a soap TV series turns out to be an indicator of French social issues.<br><br>
+<center>
+<img class="mainimage" width="80%" src="hyperobjects/ina/slidejose.png"><br>
+Temporal word cloud for the TV series
+ « Joséphine, ange gardien »
+from 1997 to 2015
+ </center>  
+<br><br>
+<h2>
+From archive to data : for a documentary expertise of metadata
+</h2>
+The app Baromètre+ is not intended to automate human judgment and interpretation. The application was developed so as to create a new hybrid expertise between IT and documentation.
+This interaction between humanities and data science will certainly have an increasingly important role to play in historiography and archiving reconfigured by technology. The meaning of Barometer+ lies in the fact that it makes it possible to interact two domains of skills which are a priori distinct. Indeed, it is in the back and forth between the relevance test and the configuration of the corpus that the indicator is constructed.
+The definition of the corpus is guided by the advice of documentalists within the limits of formalizable rules. It would be possible to add new rules so that there is systematically a default setting for all corpora.
+The relevance test constitutes a direct feedback to quantify the value of an indicator in the purely numerical sense of representativeness on all of the data.
+The corpus parameters are defined by a context informed by documentary knowledge.
+IT offers the ability to process a larger set of data and to use other types of information. Thus, it makes possible studies on a larger time scale.
+Cataloging metadata has shown that data about the data is as meaningful for a media study as the data itself. <br><br>
+ <center>
+<img class="mainimage"  width="50%" src="hyperobjects/ina/prez.jpg" alt="" />
+</center>
+<br><br>
+The data architect <a href="http://www.lespetitescases.net/">Gautier Poupeau</a> and I were invited to meet with the Business Application Platform Lead of Google Cloud to discuss prospects of cloud computing and our experience of BigQuery.
+<br>
+<br><br>
+Finally, my work led to the publication of a survey on the media coverage of the Charlie Hebdo terrorist attack. The goal was to compare the media coverage of this terrorist attack (January 2015) with the Bataclan attack (November 2015). This survey was commissioned by the French Research Centre for “the Study and Observation of Living Conditions” (CREDOC). What was particularly interesting in this study, was to find a way to identify programs talking about a specific political event. Because there was not such a concept of "Charlie Hebdo terrorist attack" in the metadata, I had to gather a semantic field evolving around this historical event : name of public figures and places, specific descriptive keywords. Moreover, I highlighted which strategy was adopted by TV channels to cover such event, as well as how the program grid was restructured. Some TV channels invited religious experts, political figures or relatives of the victims, while others prefered forces of order. The article in available online, on <a href="https://larevuedesmedias.ina.fr/de-charlie-au-bataclan-retour-sur-la-mediatisation-des-attentats-de-2015">La Revue des médias</a>.<br><br>
+<center>
+  <a href="https://larevuedesmedias.ina.fr/de-charlie-au-bataclan-retour-sur-la-mediatisation-des-attentats-de-2015">
+<img class="mainimage" width="700px" height="300px" src="hyperobjects/ina/charlie1.jpg">
+<img class="mainimage" width="500px" height="300px" src="hyperobjects/ina/charlie2.png"></a>
+ </center> 
+

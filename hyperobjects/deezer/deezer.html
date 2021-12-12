@@ -1,0 +1,109 @@
+
+<div class="portfolio"><center>
+  <h1>User centered evaluation of lyrics-to-audio alignment</h1></center>
+  <div align="left" class="maincontent">
+
+<center>
+ <!-- 
+
+<br><br><br><br>
+<h2>Lyrics-to-audio alignment</h2><br> -->
+<img class="mainimage" width="50%" src="hyperobjects/deezer/johnny.jpg"><br>
+Spectrogram of Je te promets by Johnny Hallyday and its corresponding aligned lyrics
+ </center>    
+ <br><br>
+Lyrics-to-audio alignment is a task aiming to synchronize lyrics text units to the time position of their appearance in the audio signal. The main application of this task are karaoke, navigation within songs and explicit lyrics removal. 
+
+<br><br><br><br><center><h2>Performance metrics</h2></center><br>
+Among the most commonly used metrics to evaluate this task is the percentage of correct onsets (PCO), which compares the predicted alignment t hat with the ground truth alignment t 
+using a tolerance window of 0.3 seconds, supposed to represent the maximum displacement human can tolerate.<br><br><br>
+<center>
+<img  class="mainimage" width="50%" src="hyperobjects/deezer/pco.png"><br><br><img   class="mainimage" width="30%" src="hyperobjects/deezer/eq1.png"><br><br> Calculation of the performance metrics
+
+ </center>    
+ <br>
+<br>
+Like most Music Information Retrieval metrics, PCO is defined as music and user independent. This is quite convenient from a practical researchers standpoint, but now that state of the art systems are getting better, further improvement will have to be measured differently, taking into account not only the magnitude of errors but how perceptually noticeable they are.
+
+<br><br><br><br>
+<center><h2>Psychological insights</h2></center><br>
+Looking at the state of the art of psychology research of synchrony perception, we found that the perception of synchrony relies both on global and local rhythmic context. Individuals use music and linguistic cues to perceive
+rhythm and they tend to tolerate more audio lagging than visual lagging.<br><br>
+<center>
+<img width="80%" src="hyperobjects/deezer/insights.svg">
+ </center>  
+<br><br>
+To summarise we have this PCO metric which assumed the synchrony perception to be symmetric as well as independent of musical linguistic features of a given song.
+By contrast, we make the hypothesis that synchrony perception is asymetric. We suppose that audio lagging is preferred over lyrics lagging. We assume global and local rhythmic factors have an impact on synchrony perception.
+
+<br><br><br><br>
+<center><h2>Experiment Design</h2></center>
+
+In order to test those hypothesis, we designed two experiment inspired from the main application of this task: Karaoke. To run both we developed a Karaoke app prototype named Dalida.
+During this experiment, we generate errors by adding an offset between lyrics audio with values ranging from minus one second two plus one second. We then ask participant to annotate their perceived quality of alignment reported in a ternary choice answer: If the lyrics were ahead, lagging or synchronous.<br><br><br>
+<center>
+<img width="90%" src="hyperobjects/deezer/instruction.jpg"><br>Experiment instructions<br><br>
+<img width="45%" src="hyperobjects/deezer/kara1.jpg">
+<img width="45%" src="hyperobjects/deezer/kara2.png"><br>
+<p style="text-align:left; margin-left: 20%;">
+    Karaoke player
+    <span style="float:right; margin-right: 30%">
+       Questionnaire
+    </span>
+</p>
+ </center> 
+<br><br><br><br>
+<center><h2>Results</h2></center>
+
+Looking at the respective thresholds for lyrics ahead and lyrics lagging, it is clear that individuals prefer lyrics ahead over lyrics lagging.<br><br>
+
+<center>
+<img  class="mainimage" width="45%" src="hyperobjects/deezer/sync.png"><br>
+Aggregated data of synchrony perception.
+ </center>
+<br><br><br>
+
+Moreover, participants are more tolerant to lyrics ahead in high world rate than in low word rate.<br><br>
+
+<center>
+<img  class="mainimage" width="45%" src="hyperobjects/deezer/wps.png">
+ <br><br><br><br>
+
+ <h2>Implications for evaluation metrics</h2><br> </center>
+Eventually we present a practical application of our results so as to refine evaluation metrics.
+
+We propose a generalization of the PCO metric, where the function F can be seen as a penalty weighting of the annotation offset.
+This function can be chosen either to get back to standard PCO metric by using a square window or to take into account the asymmetrical perception with different thresholds.
+Then we create the perceptual PCO by using as a weighting function, the one fit from data collected in our experiment.
+<center>
+<img  class="mainimage" width="30%" src="hyperobjects/deezer/eq2.png">
+ </center> 
+
+Finally, we evaluated three state of the art automatic lyrics alignment models with those three versions of the PCO metric. 
+Interestingly, there appears to be little difference between using the standard PCO window and a slightly shifted one. However, scores for the perceptual PCO are much lower.<br><br>
+<center>
+<img  class="mainimage" width="45%" src="hyperobjects/deezer/eval.png">
+ </center> 
+<br><br><br><br>To conclude with found evidence for the asymmetrical perception of lyrics to audio alignment and to some extent for global rhythmic factors influence, We proposed a perceptually grounded metric that captures the relative importance of alignment errors according to human perception.
+
+<br><br><br>
+The paper "User centered evaluation of lyrics-to-audio alignment", co-written with Andrea Vaglio and Manuel Moussallam is available <span class='word' ><a href="https://archives.ismir.net/ismir2021/paper/000052.pdf">here</a></span>. I presented it at <a href="https://ismir2021.ismir.net">International Society for Music Information Retrieval (ISMIR) conference 2021</a>.<br><br>
+<center>
+<a href="https://ismir2021.ismir.net"><img  class="mainimage" width="50%" src="hyperobjects/deezer/ismirHD.jpg"></a><br>
+ </center>
+
+<br><br>
+<center>
+    <div class="container-resp">
+    <video class="responsive-iframe"  controls> <!-- width="1000" height="600"-->
+    <source src="https://drive.google.com/uc?export=download&id=1vzmnTw502gWhlj5rZsi2HiHAJxedvkMH" type="video/mp4">
+    </object>
+</video>
+</div>
+<!--<iframe src="https://drive.google.com/file/d/1ScWD4Jboqd_xOdukzcoKIwry3FPaG7MD/preview" width="640" height="380" allow="autoplay"></iframe>-->
+</center>
+</div>
+</div>
+
+
+    

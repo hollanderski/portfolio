@@ -1,0 +1,36 @@
+
+<div  class="portfolio"><center>
+  <h1>Localization and Cartography in complex environment</h1></center>
+  <div align="left" class="maincontent">
+
+ <br>
+<center>
+    <img width="20%" src="hyperobjects/robot/burger.png">
+ </center>    
+ 
+    <div align="left" style=" padding: 10%;">
+At the University of Technology of Compiègne, during the course "Sensors for Intelligent Systems" I implemented of trilateration algorithm so as to localize a robot (Turtlebot3) in various scenarios. The robot could follow either a simple trajectory with no obstacles, or a winding path with obtacles. Nevertheless, in each scenario there are 3 markers (2 green, 1 red) present in the environment. <br>
+My localization method relies on 2D pictures taken from the camera of the robot. Thanks to image segmentation, I am able to extract the coordinate of 3 markers. Afterwards, I compute the intersection of the 3 circumscribed circles passing through each pair of markers, in order to deduce the position of the robot in world coordinate.<br><br>
+
+
+ <center> 
+ <img width="55%" src="hyperobjects/robot/triangulation.gif"><br>
+Illustration of the localization method, from 3 markers</a>.
+
+</center><br><br>
+
+
+Finally, I created a map of the environment with LiDAR scan. In order to group the points by clusters, we will compare the distance for each triplet of points. If this minimum distance is less than a certain threshold, we see if the associated point already belongs to a cluster. We create an array of groups, and an array allowing to map each point to a group, thanks to its index in the group array. We colorize our clusters and we use the Ramer-Douglas-Peucker algorithm to obtain a simplified line passing through our cluster.<br><br>
+<center>
+
+ <img width="55%"  src="hyperobjects/robot/cartographie.gif"><br>
+ <div  style="width: 55%; text-align: left; margin: 0 auto;"><br>Cartography obtained from LiDAR scan</div>
+<br><br>
+
+</center>
+
+</div> 
+</div>
+</div>
+
+

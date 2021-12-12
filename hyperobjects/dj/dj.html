@@ -1,0 +1,67 @@
+<div class="portfolio"><center>
+  <h1>Simulation platform for quantum computing</h1></center>
+  <br><br>
+ <iframe src="hyperobjects/dj/bloch" width="100%" height="500"></iframe><br><i>Bloch sphere : Simulation of one Qubit</i>
+
+  <div align="left" class="maincontent">
+     At the University of Technology of Compiègne, I designed with a team of computer science students a IA distributed simulation platform for quantum computing for popularization purposes. It consisted of a parallelized representation of the quantum circuit of Deutsch-Jozsa algorithm aiming to be distributed on several computers. It was implemented in Java using the multi-agent framework <a href="https://gist.github.com/gyassine/a6689d1d7b5332da561f73401917d605">Jade</a>. Check our <a href="https://gitlab.utc.fr/schrodinger-group/deutsch-josza">public repo on GitLab</a>.
+     <br>
+     Afterwards, I wrote with Franck Assedou a dissertation on quantum computing. The idea was to introduce basic quantum algorithms (Deutsch–Jozsa and Grover) with metaphors, to endow people with some insights about quantum computing with very few mathematical formula. To make quantum computating as accessible as possible, the dissertation is self-contained, which means that all the mathematical concepts mandatory to understand its content, such as complex numbers, are explained in the dissertation. Anyone can read it without any prerequisite. Below is a extract explaining the principle of quantum search achieved through Grover algorithm.<br><br> 
+
+<!--
+ <img  width="100%" src="hyperobjects/dj/dj.jpg" alt="" /> 
+
+I studied the time complexity improvement of quantum adaptations of machine learning algorithms (SVM, k-mean, k-median) thanks to Grover algorithm.
+
+-->
+
+
+<br><br><br>
+  <h2>Quantum Search : Grover algorithm</h2>
+
+
+  <div style="background-color: rgb(0,0,255,0.2); padding:5%">Imagine a dictionary of the French language that would be a bit special. Indeed, the words would not be sorted in alphabetical order but they would be put in a totally random order. If we want to know the definition of a word, it might be complicated. If we are extremely lucky, the word we are looking for will be the very first in the dictionary. Conversely, if we are really unlucky, it will be the very last, and in this case, you will have to read all the words in the dictionary before finding the right one.<br>
+Finding the right item in a large list of unsorted items - in this case finding the right word among a list of words in a dictionary where words would be placed randomly - is a major search problem.
+In the classic case, there is not a magic solution, you have to read all the elements one by one until you find the right one. If we imagine that there are n elements in this list, then in the worst case, i.e. when the element we are looking for is the very last, we will have to perform n operations, an operation here being the reading of an item. In theoretical computer science, we say that such a search has a complexity of O(n).<br>
+Thanks to the parallelism provided by quantum computing, it is possible to perform this search with a complexity of O(<math><msqrt><mi>n</mi></msqrt></math>), namely in about <math><msqrt><mi>n</mi></msqrt></math> operations. To do so, we use Grover's algorithm. Let us imagine that each element of the list has an index, a unique identifier allowing it to be located and which, unlike the elements themselves, would be sorted. For example, imagine that in the dictionary, all the words are unordered but each word has a unique number: the first word in the dictionary is marked by the number 0, the second is marked by the number 1, the third by the number 2 and so on. If we know the index of the word we are looking for, finding it in the dictionary immediately becomes very simple, it is like opening a book on the right page when we know that page. The purpose of Grover's algorithm is to give us this index. <br><br> 
+
+ Check <span class='word' ><a href="https://drive.google.com/file/d/1RcdAr4IS7R2ogvFZNgeGzW3EHydzsZtM/preview">our&nbsp;presentation</a></span> and <span class='word' ><a href="https://drive.google.com/file/d/1U2H8Tr_iS5RRxORuLciD7y-VeM2R8hIC/preview">dissertation</a></span> (in French).
+</div>
+<!--
+<br><br>
+The Grover algorithm works as follows: at the beginning, we had enough qubits to note all the indices in the list in the quantum state of those qubits. For example, if we have 2 qubits, we can write 4 indices, each represented by one of the eigenstates: |00> for index 0, |01> for index 1, |10> for index 2 and |11> for index 3.<br>More generally, with k qubits, we can represent 2<sup>k</sup> indices. This is why if we have n indices, we have to use k = log<sub>2</sub> n qubits.<br>
+Initially, the n states of the k qubits are all equiprobable, that is, they all have the same probability coefficient. At this point in time, if we measured the qubits, we would have the same probability of getting each of the states.<br><br>
+These k qubits will then be passed several times in a quantum circuit containing an oracle and whose internal configuration depends on the list in which we want to search and on the element we want to find.<br>By quantum parallelism, each of the indices in the list will pass through this circuit at the same time, and this circuit will result in slightly increasing the coefficient of the eigenstate corresponding to the good element, and slightly decreasing all the others.<br>
+When we pass through this circuit several times, this phenomenon will be amplified and the coefficient of the good element will be greater and greater. After a number of passes approximately equal to √n, the probability coefficient of the good element will be quite close to 1. When we measure the state, we will therefore have a good probability of obtaining the correct answer.<br>
+This algorithm is therefore not deterministic but rather probabilistic. We can easily verify whether the answer is correct or not: just look at the item located at the index we found. If this is what you are looking for, it is the right one, otherwise you have to redo the algorithm. However, we can run this algorithm multiple times while still being much more efficient than the non-quantum equivalent because a single pass through the quantum algorithm is really faster than a pass through the classical algorithm, and 2 passes also remain much faster, 3, 4, etc. Mathematically, it is extremely likely, if not almost certain, that we will find the correct answer after a fairly small number of executions of the algorithm. The duration, even with a Grover algorithm performed several times, will then be considerably less than the classical equivalent of the algorithm.
+<br><br><br>
+
+The amplification of the coefficient of the good element is done in 3 steps : <br><br>
+<center>
+ 1. Preparation of the states<br>
+   <img  width="50%" src="hyperobjects/dj/grover1.png" alt="" /><br>
+   example with 2 qubits : 
+   |q1q2> = 1/2 |00> + 1/2 |01> + 1/2 |10> + 1/2 |11><br><br>
+  2. Inversion of coefficient <br>
+ <img  width="50%" src="hyperobjects/dj/grover2.png" alt="" /><br>
+ example with 2 qubits : |q1q2> = 1/2 |00> - 1/2 |01> + 1/2 |10> + 1/2 |11><br><br>
+ 3. Symetry by the mean<br>
+ <img  width="50%" src="hyperobjects/dj/grover3.png" alt="" /><br>
+ example with 2 qubits : |q1q2> = 0 |00> + 1 |01> + 0 |10> + 0 |11><br>
+</center>
+
+--> 
+<br><br><br>
+<center>
+ <img  width="100%" src="hyperobjects/dj/dj.jpg" alt="" /> 
+</center>
+<i>Circuit of Grover algorithm</i>
+ <br><br>
+
+ <!--
+ <iframe src="https://drive.google.com/file/d/1RcdAr4IS7R2ogvFZNgeGzW3EHydzsZtM/preview" width="100%" height="500"></iframe>
+  <iframe src="https://drive.google.com/file/d/1U2H8Tr_iS5RRxORuLciD7y-VeM2R8hIC/preview" width="100%" height="500"></iframe>
+-->
+  
+  </div>
+</div>
